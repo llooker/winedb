@@ -35,7 +35,7 @@ view: winedb {
 
   dimension: wine_region {
     type: string
-    sql: ${TABLE}.wine_region ;;
+    sql: initcap(${TABLE}.wine_region) ;;
   }
 
   dimension: winename {

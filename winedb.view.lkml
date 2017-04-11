@@ -7,6 +7,7 @@ view: winedb {
   }
 
   dimension: priceaverage {
+    hidden: yes
     type: number
     sql: ${TABLE}."price-average" ;;
   }
@@ -27,8 +28,9 @@ view: winedb {
   }
 
   dimension: vintage {
-    type: number
+    type: string
     sql: ${TABLE}.vintage ;;
+    full_suggestions: yes
   }
 
   dimension: wine_region {
@@ -39,10 +41,39 @@ view: winedb {
   dimension: winename {
     type: string
     sql: ${TABLE}."wine-name" ;;
+    full_suggestions: yes
   }
 
   measure: count {
     type: count
-    drill_fields: [winename]
+    drill_fields: [wine_details*]
+  }
+  measure: Total_Price {
+    type: sum
+    value_format_name: usd
+    sql: ${priceaverage} ;;
+
+    drill_fields: [wine_details*]
+  }
+  measure: average_Price {
+    type: average
+    sql: ${priceaverage} ;;
+    value_format_name: usd
+    drill_fields: [wine_details*]
+  }
+  measure: average_Price_Max {
+    type: average
+    sql: ${pricemax} ;;
+    value_format_name: usd
+    drill_fields: [wine_details*]
+  }
+  measure: average_Price_Min {
+    type: average
+    sql: ${pricemin} ;;
+    value_format_name: usd
+    drill_fields: [wine_details*]
+  }
+  set: wine_details {
+    fields: [winename,wine_region,vintage,pricemin,pricemax,grape]
   }
 }

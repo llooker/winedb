@@ -42,6 +42,12 @@ view: winedb {
     type: string
     sql: ${TABLE}."wine-name" ;;
     full_suggestions: yes
+    link: {
+      label: "Wine Searcher"
+      url: "http://www.wine-searcher.com/find/{{value}}"
+      icon_url: "https://lh3.ggpht.com/dBp9byeKspKdm_9BWmjSZPXxFFVv9FfvZNlZYEQxP8ro_rhtUhO741AiHUuDqbKuMVNp=w300"
+
+    }
   }
 
   measure: count {

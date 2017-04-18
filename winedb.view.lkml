@@ -49,6 +49,18 @@ view: winedb {
 
     }
   }
+  ##Filters##
+#   filter: red_filter {
+#     label: "Only Red"
+#     type: yesno
+#     sql: ${grape} in ('Bordeaux Blend Red','Cabernet Sauvignon','Cabernet Sauvignon - Merlot','Merlot','Pinot Noir')
+#
+#          ;;
+#   }
+  dimension: is_red {
+    type: yesno
+    sql: ${grape} in ('Bordeaux Blend Red','Cabernet Sauvignon','Cabernet Sauvignon - Merlot','Merlot','Pinot Noir') ;;
+  }
 
   measure: count {
     type: count
@@ -80,6 +92,6 @@ view: winedb {
     drill_fields: [wine_details*]
   }
   set: wine_details {
-    fields: [winename,wine_region,vintage,pricemin,pricemax,grape]
+    fields: [winename,wine_region,vintage,pricemin,priceaverage,pricemax,grape]
   }
 }

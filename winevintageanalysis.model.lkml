@@ -1,4 +1,4 @@
-connection: "winedb"
+connection: "wine_db"
 
 # include all the views
 include: "*.view"

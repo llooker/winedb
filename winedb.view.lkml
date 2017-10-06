@@ -11,6 +11,12 @@ view: winedb {
     type: number
     sql: ${TABLE}."price-average" ;;
   }
+  dimension: priceaverage_tiers {
+    tiers: [100,500,1000]
+    type: tier
+    style: integer
+    sql: ${TABLE}."price-average" ;;
+  }
 
   dimension: pricemax {
     type: number

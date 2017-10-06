@@ -10,6 +10,7 @@ view: winedb {
     hidden: yes
     type: number
     sql: ${TABLE}."price-average" ;;
+    value_format_name: usd_0
   }
   dimension: priceaverage_tiers {
     label: "Price Average Tiers"

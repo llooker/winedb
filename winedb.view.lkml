@@ -12,6 +12,7 @@ view: winedb {
     sql: ${TABLE}."price-average" ;;
   }
   dimension: priceaverage_tiers {
+    label: "Price Average Tiers"
     tiers: [100,500,1000]
     type: tier
     style: integer
@@ -21,11 +22,13 @@ view: winedb {
   dimension: pricemax {
     type: number
     sql: ${TABLE}."price-max" ;;
+    value_format_name: usd_0
   }
 
   dimension: pricemin {
     type: number
     sql: ${TABLE}."price-min" ;;
+    value_format_name: usd_0
   }
 
   dimension: region {
@@ -40,6 +43,7 @@ view: winedb {
   }
 
   dimension: wine_region {
+    description: "Napa in California, Bordeaux in France, Burgundy in France"
     type: string
     sql: initcap(${TABLE}.wine_region) ;;
   }
@@ -74,7 +78,7 @@ view: winedb {
   }
   measure: Total_Price {
     type: sum
-    value_format_name: usd
+    value_format_name: usd_0
     sql: ${priceaverage} ;;
 
     drill_fields: [wine_details*]
@@ -82,19 +86,19 @@ view: winedb {
   measure: average_Price {
     type: average
     sql: ${priceaverage} ;;
-    value_format_name: usd
+    value_format_name: usd_0
     drill_fields: [wine_details*]
   }
   measure: average_Price_Max {
     type: average
     sql: ${pricemax} ;;
-    value_format_name: usd
+    value_format_name: usd_0
     drill_fields: [wine_details*]
   }
   measure: average_Price_Min {
     type: average
     sql: ${pricemin} ;;
-    value_format_name: usd
+    value_format_name: usd_0
     drill_fields: [wine_details*]
   }
   set: wine_details {

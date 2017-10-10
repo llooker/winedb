@@ -5,6 +5,25 @@ view: winedb {
     type: string
     sql: ${TABLE}.grape ;;
   }
+  dimension: grape_html {
+    type: string
+    sql: ${grape} ;;
+    html:
+    <div >
+    <table style="width:100%;border-left:none;border:none;font-size:16px;" >
+    <tr style="border-left:none;padding-left:0px;">
+    <td style="font-weight:800;padding-top:15px;color:#76678b;border:none;padding-left:0px;">Grape</td>
+    <td style="font-weight:500;padding-top:15px;color:#76678b;border:none;">{{ grape._value}}</td>
+    <td style="font-weight:800;padding-top:15px;color:#76678b;border:none;padding-left:0px;">Price</td>
+    <td style="font-weight:500;padding-top:15px;color:#76678b;border:none;">{{ Total_Price._value}}</td>
+    </tr>
+    <tr>
+    <td style="font-weight:800;padding-top:15px;color:#76678b;border:none;padding-left:0px;">Retail Price</td>
+    <td style="font-weight:500;padding-top:15px;color:#76678b;border:none;">{{ priceaverage_tiers._value}}</td>
+    </tr>
+    </table>
+    </div>;;
+  }
 
   dimension: priceaverage {
     hidden: yes

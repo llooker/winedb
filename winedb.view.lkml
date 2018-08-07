@@ -1,5 +1,6 @@
 view: winedb {
   sql_table_name: public.winedb ;;
+  label: "Wine explorer"
 
   dimension: grape {
     type: string

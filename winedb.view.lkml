@@ -5,6 +5,11 @@ view: winedb {
     type: string
     sql: ${TABLE}.grape ;;
   }
+  parameter: wine_to_compare {
+    type: string
+    suggest_dimension: winename
+  }
+
   dimension: grape_html {
     type: string
     sql: ${grape} ;;
@@ -108,6 +113,13 @@ view: winedb {
     sql: ${priceaverage} ;;
     value_format_name: usd_0
     drill_fields: [wine_details*]
+  }
+  measure: average_Price_compared_wine {
+    type: average
+    sql: case when ${winename} = {% parameter wine_to_compare %} then ${pricemax} else 0 end ;;
+    value_format_name: usd_0
+    drill_fields: [wine_details*]
+
   }
   measure: average_Price_Max {
     type: average

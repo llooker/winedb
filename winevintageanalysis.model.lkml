@@ -4,11 +4,12 @@ connection: "wine_db"
 include: "*.view"
 
 # include all the dashboards
-include: "*.dashboard"
+
 
 explore: winedb {
-  persist_for: "24 hours"
-  sql_always_where: ${region} is not null ;;
 
+  view_label: "Vintages"
+  description: "Wine analysis across Burgundy/Napa/Bordeaux"
+  group_label: "Wine Analysis"
 
-}
+  }

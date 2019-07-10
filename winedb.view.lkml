@@ -5,7 +5,17 @@ view: winedb {
   dimension: grape {
     type: string
     sql: ${TABLE}.grape ;;
+    html: {% if value == 'Bourgogne' %}
+    <p style="color: black; background-color: lightblue; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'Burgundy' %}
+    <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %}
+    ;;
   }
+
+
   parameter: wine_to_compare {
     type: string
     suggest_dimension: winename
@@ -100,6 +110,11 @@ view: winedb {
 
   measure: count {
     type: count
+    drill_fields: [wine_details*]
+  }
+  measure: distinct_count {
+    type: count_distinct
+    sql: ${vintage} ;;
     drill_fields: [wine_details*]
   }
   measure: Total_Price {
